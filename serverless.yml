@@ -16,13 +16,14 @@ service: test
 #app: your-app-name
 #org: your-org-name
 
+configValidationMode: none
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: python3.12
+  runtime: python3.11
   region: ap-northeast-1
 
 # you can overwrite defaults here
