@@ -1,24 +1,21 @@
-import json
+import pg8000.dbapi
 
 
 def hello(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
+    try:
+        con = pg8000.dbapi.connect(user="postgres", password="postgres",
+                                   host="localhost", database="testdb")
+        cur = con.cursor()
+        cur.execute('SELECT to_json(data) FROM data;')
+        results = cur.fetchall()
+        cur.close()
+    except Exception:
+        print("Connection failed")
+    finally:
+        print("Connection successful")
+        con.close()
 
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
-
-    return response
-
-    # Use this code if you don't use the http event with the LAMBDA-PROXY
-    # integration
-    """
     return {
         "message": "Go Serverless v1.0! Your function executed successfully!",
-        "event": event
+        "data": results
     }
-    """
