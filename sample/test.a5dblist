@@ -1,0 +1,4 @@
+# A5:SQL Mk-2 Database list
+
+[DatabaseList]
+localhost/testdb=__ConnectionType=Internal;ProviderName=PostgreSQL;SavePassword=True;ServerName=localhost;Port=5432;Database=testdb;UserName=postgres;Password=;DBType=PostgreSQL;ProtocolVersion=30;SSLMode=Disable
