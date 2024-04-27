@@ -23,7 +23,6 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: python3.11
   region: ap-northeast-1
 
 # you can overwrite defaults here
@@ -62,7 +61,20 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    runtime: python3.11
+    handler: src/hello/handler.hello
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+
+  boodbye:
+    runtime: python3.11
+    handler: src/boodbye/handler.boodbye
+    events:
+      - httpApi:
+          path: /boodbye
+          method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
