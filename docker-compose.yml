@@ -21,6 +21,7 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=example@example.com
       - PGADMIN_DEFAULT_PASSWORD=password
+    user: "$UID:$GID"
     depends_on:
       - postgres
 
