@@ -25,6 +25,54 @@ provider:
   name: aws
   region: ap-northeast-1
 
+functions:
+  hello:
+    runtime: python3.11
+    handler: src/hello/handler.hello
+    events:
+      - httpApi:
+          path: /hello
+          method: get
+    package:
+      individually: true
+      patterns:
+        - "!**"
+        - "!**/**"
+        - "src/hello/handler.py"
+    layers:
+      - "Ref": "PythonRequirementsLambdaLayer"
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "ssm:GetParameter"
+          - "sts:AssumeRole"
+        Resource:
+          - "*"
+  boodbye:
+    runtime: python3.11
+    handler: src/boodbye/handler.boodbye
+    events:
+      - httpApi:
+          path: /boodbye
+          method: get
+    package:
+      individually: true
+      patterns:
+        - "!**"
+        - "!**/**"
+        - "src/boodbye/handler.py"
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    usePipenv: true
+    layer:
+      compatibleRuntimes:
+        - python3.11
+        - python3.12
+
+plugins:
+  - serverless-python-requirements
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -58,23 +106,6 @@ provider:
 #    - '!exclude-me-dir/**'
 #    - include-me.py
 #    - include-me-dir/**
-
-functions:
-  hello:
-    runtime: python3.11
-    handler: src/hello/handler.hello
-    events:
-      - httpApi:
-          path: /hello
-          method: get
-
-  boodbye:
-    runtime: python3.11
-    handler: src/boodbye/handler.boodbye
-    events:
-      - httpApi:
-          path: /boodbye
-          method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
@@ -126,6 +157,3 @@ functions:
 #     NewOutput:
 #       Description: "Description for the output"
 #       Value: "Some output value"
-
-plugins:
-  - serverless-python-requirements
