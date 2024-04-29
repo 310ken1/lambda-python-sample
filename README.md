@@ -64,9 +64,19 @@ docker compose -f "docker-compose.yml" up -d --build
 
 #### pgAdmin の接続設定
 
-http://localhost:8080
-user：example@example.com
-pass：password
+- ログイン設定
+  http://localhost:8080
+  |設定|値|
+  |-|-|
+  |user|example@example.com|
+  |pass|password|
+
+- DB 接続設定
+  |設定|値|
+  |-|-|
+  |ホスト名/アドレス|postgres|
+  |ユーザ名|postgres|
+  |パスワード|postgres|
 
 ### ローカル実行
 
