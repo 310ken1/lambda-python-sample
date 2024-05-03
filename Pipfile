@@ -13,6 +13,7 @@ moto = {extras = ["all"], version = "*"}
 flake8 = "*"
 autopep8 = "*"
 mypy = "*"
+pytest-mock = "*"
 
 [requires]
 python_version = "3.12"
