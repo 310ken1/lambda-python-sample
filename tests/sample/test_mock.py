@@ -23,7 +23,7 @@ def test_send(mocker):
 
     result = send('Hello World!')
 
-    assert result
+    assert True is result
 
     # 一度だけコールされたことの確認
     receive.assert_called_once_with('Hello World!')
