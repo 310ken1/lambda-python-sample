@@ -14,6 +14,7 @@ flake8 = "*"
 autopep8 = "*"
 mypy = "*"
 pytest-mock = "*"
+boto3-stubs = {extras = ["ssm"], version = "==1.34.97"}
 
 [requires]
 python_version = "3.12"
