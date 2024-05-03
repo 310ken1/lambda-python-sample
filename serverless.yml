@@ -48,19 +48,19 @@ functions:
           - "sts:AssumeRole"
         Resource:
           - "*"
-  boodbye:
+  goodbye:
     runtime: python3.11
-    handler: src/boodbye/handler.boodbye
+    handler: src/goodbye/handler.goodbye
     events:
       - httpApi:
-          path: /boodbye
+          path: /goodbye
           method: get
     package:
       individually: true
       patterns:
         - "!**"
         - "!**/**"
-        - "src/boodbye/handler.py"
+        - "src/goodbye/handler.py"
 
 custom:
   pythonRequirements:
