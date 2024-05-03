@@ -96,6 +96,12 @@ sls invoke -f <関数名>
 sls deploy
 ```
 
+### テストの実行
+
+```cmd
+lambda-python-sample>python -m pytest -s tests\hello\test_hello.py
+```
+
 ---
 
 ## 開発環境の構築
