@@ -1,5 +1,11 @@
 {
-  "editor.formatOnSave": true,
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
   "python.terminal.activateEnvInCurrentTerminal": true,
   "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
   "python.testing.autoTestDiscoverOnSaveEnabled": true,
@@ -13,5 +19,6 @@
   ],
   "coverage-gutters.showGutterCoverage": true,
   "coverage-gutters.showLineCoverage": true,
-  "coverage-gutters.showRulerCoverage": true
+  "coverage-gutters.showRulerCoverage": true,
+  "isort.args": ["--profile", "black"]
 }
